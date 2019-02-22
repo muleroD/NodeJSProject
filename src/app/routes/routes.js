@@ -16,18 +16,28 @@ module.exports = (app) => {
         );
     });
 
-    app.get("/Livros", (req, res) => {
+    app.get("/livros", (req, res) => {
         const livroDAO = new LivroDAO(db);
 
         livroDAO.listar()
-            .then(result =>
+            .then(livros =>
                 res.marko(
                     require("../views/livros/lista/lista.marko"),
-                    {
-                        result
-                    }))
+                    { livros }))
             .catch(error => console.log(error));
+    });
 
+    app.get("/livros/form", function (req, res) {
+        res.marko(require("../views/livros/forms/form.marko"))
+    });
+
+    app.post("/livros", function (req, res) {
+        const livroDAO = new LivroDAO(db);
+        console.log(req.body);
+
+        livroDAO.cadastrar(req.body)
+            .then(res.redirect("/livros"))
+            .catch(error => console.log(error));
     });
 
 };

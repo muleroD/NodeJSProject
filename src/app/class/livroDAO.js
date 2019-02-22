@@ -18,6 +18,20 @@ class LivroDAO {
         });
     }
 
-}
+    cadastrar(livro) {
+        return new Promise((success, failed) => {
+            this._db.run(
+                "INSERT INTO livros (titulo,preco,descricao) values (?, ?, ?)",
+                [livro.titulo, livro.preco, livro.descricao],
+                function (err) {
+                    if (err) {
+                        console.log(err);
+                        return reject('Não foi possível adicionar o livro!');
+                    }
 
-module.exports = LivroDAO;
+                    success();
+                })
+        })
+    };
+
+} module.exports = LivroDAO;
