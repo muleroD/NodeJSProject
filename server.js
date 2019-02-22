@@ -1,10 +1,12 @@
-const http = require('http');
-const server = http.createServer(function (req, res) {
+const app = require("./src/config/configExpress")
 
-    let html = "";
+app.listen(3000, function () {
+    console.log("Server run in port 3000");
+    console.log("http://localhost:3000");
+});
 
-    if (req.url == "/") {
-        html = `
+app.get("/", (req, res) => {
+    res.send(`
         <html>
         <head>
             <meta charset="utf-8">
@@ -12,20 +14,6 @@ const server = http.createServer(function (req, res) {
         <body>
             <h1> Casa do Código </h1>
         </body> 
-        </html>`;
-    } else if (req.url == "/livros") {
-        html = `
-        <html>
-        <head>
-            <meta charset="utf-8">
-        </head>
-        <body>
-            <h1> Listagem de Livros </h1>
-        </body> 
-        </html>`;
-    }
-
-    res.end(html)
+        </html>`
+    );
 });
-
-server.listen(3000)
