@@ -19,11 +19,11 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Bem-vindo a Casa do Código</h1><h2>O que deseja fazer?</h2><ul><li><a href=\"/livros\">Listar Livro</a></li><li><a href=\"/livros/buscar\">Buscar Livro</a></li><li><a href=\"/livros/form\">Cadastrar Livro</a></li><li><a href=\"/livros/form/delete\">Remover Livro</a></li><li><a href=\"/livros/form/update\">Atualizar Livro</a></li></ul>");
+  out.w("<h1>Bem-vindo a Casa do Código</h1><h2>O que deseja fazer?</h2><ul><li><a href=\"/livros\">Listar Livro</a></li><li><a href=\"/livros/form\">Cadastrar Livro</a></li></ul>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "20");
+  await_reorderer_tag({}, out, __component, "14");
 
   out.w("</body></html>");
 }

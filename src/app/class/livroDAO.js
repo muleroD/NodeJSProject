@@ -21,7 +21,7 @@ class LivroDAO {
     selectById(id) {
         return new Promise((success, failed) => {
             this._db.get(
-                "SELECT * FROM livro WHERE id = ?",
+                "SELECT * FROM livros WHERE id = ?",
                 [id],
                 function (err) {
 
@@ -33,7 +33,7 @@ class LivroDAO {
                     return success();
                 }
             )
-        })
+        });
     }
 
     insert(livro) {
